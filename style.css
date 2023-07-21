@@ -28,9 +28,21 @@ form {
     gap: 15px;
 }
 
+.listItem:nth-child(even) {
+    background-color: grey;
+}
 .listItem h3 {
-    max-width: 200px;
+    width: 200px;
 }
 .date {
-    width: 100px;
+    width: 120px;
+    text-align: center;
+}
+
+.delete {
+    border: 2px solid black;
+    vertical-align: middle;
+}
+.delete:hover {
+    cursor: pointer;
 }
