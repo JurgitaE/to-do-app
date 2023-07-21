@@ -12,6 +12,17 @@
         <link rel="stylesheet" href="./style.css" />
     </head>
     <body>
+        <h1>Welcome to To-DO app!</h1>
+        <form action="">
+            <h2>Add a to-do item</h2>
+            <label for="start">Start date</label>
+            <input type="datetime-local" name="start" id="start" />
+            <label for="end">End date</label>
+            <input type="datetime-local" name="end" id="start" />
+            <label for="description">Add short description:</label>
+            <textarea name="description" id="description" cols="30" rows="10" maxlength="160"></textarea>
+            <button id="add">Add</button>
+        </form>
         <script src="./script.js" defer></script>
     </body>
 </html>
