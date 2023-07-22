@@ -1,4 +1,4 @@
-import getDeadline from '../getDeadline.js';
+import getDeadline from '../helper-functions/getDeadline.js';
 
 function timeTillDeadlineElement(task) {
     const timeTillDeadline = document.createElement('p');

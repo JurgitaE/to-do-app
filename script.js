@@ -1,5 +1,5 @@
 'use strict';
-import getFormattedTime from './components/getFormattedTime.js';
+import getFormattedTime from './components/helper-functions/getDeadline.js';
 import { initialData, sessionKey, sortKey } from './components/initialData.js';
 import taskListGenerator from './components/taskListGenerator.js';
 

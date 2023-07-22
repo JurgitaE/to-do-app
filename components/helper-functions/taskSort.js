@@ -1,4 +1,4 @@
-import { sessionKey, sortKey } from './initialData.js';
+import { sessionKey, sortKey } from '../initialData.js';
 
 function taskSort() {
     const taskList = JSON.parse(sessionStorage.getItem(sessionKey));
