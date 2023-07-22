@@ -30,6 +30,7 @@ function taskListGenerator() {
 
         checkbox.addEventListener('click', e => {
             const taskItem = taskList.find(item => '' + item.id === '' + e.target.parentElement.id);
+
             if (!taskItem.finished) {
                 taskItem.finished = true;
                 taskItem.finishDate = Date.now();
@@ -44,12 +45,14 @@ function taskListGenerator() {
         });
 
         deleteBtn.addEventListener('click', e => {
-            taskList.splice(
-                taskList.findIndex(item => '' + item.id === '' + e.target.parentElement.id),
-                1
-            );
-            sessionStorage.setItem(sessionKey, JSON.stringify(taskList));
-            taskListGenerator(taskList);
+            if (confirm('Confirm item removal from the list.')) {
+                taskList.splice(
+                    taskList.findIndex(item => '' + item.id === '' + e.target.parentElement.id),
+                    1
+                );
+                sessionStorage.setItem(sessionKey, JSON.stringify(taskList));
+                taskListGenerator(taskList);
+            }
         });
 
         toDo.appendChild(checkbox);
