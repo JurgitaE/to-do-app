@@ -6,7 +6,6 @@ function taskSort() {
     const sortType = JSON.parse(sessionStorage.getItem(sortKey));
     if (sortType === 'new') {
         taskList.sort((a, b) => {
-            console.log(a.addedDate);
             return b.addedDate - a.addedDate;
         });
     }
@@ -19,6 +18,9 @@ function taskSort() {
         });
     }
     if (sortType === 'completed') {
+        taskList.sort((a, b) => {
+            return a.finishDate > b.finishDate ? -1 : 1;
+        });
     }
     return taskList;
 }
