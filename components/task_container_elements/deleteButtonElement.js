@@ -2,7 +2,7 @@ import { sessionKey } from '../initialData.js';
 import taskListDisplay from '../helper-functions/taskListDisplay.js';
 
 function deleteButtonElement(taskList) {
-    const deleteBtn = document.createElement('a');
+    const deleteBtn = document.createElement('button');
     deleteBtn.setAttribute('class', 'delete');
     deleteBtn.textContent = 'Delete';
     deleteBtn.addEventListener('click', e => {

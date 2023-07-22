@@ -10,7 +10,6 @@ function setUpFunction() {
         sessionStorage.setItem(sortKey, JSON.stringify('new'));
     }
     document.getElementById('sort').value = JSON.parse(sessionStorage.getItem(sortKey));
-    taskListDisplay();
 
     document.getElementById('add').addEventListener('click', function (e) {
         e.preventDefault();
@@ -47,6 +46,7 @@ function setUpFunction() {
         sessionStorage.setItem(sortKey, JSON.stringify(document.getElementById('sort').value));
         taskListDisplay();
     });
+    taskListDisplay();
 }
 
 export default setUpFunction;

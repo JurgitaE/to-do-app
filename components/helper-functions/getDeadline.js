@@ -13,7 +13,7 @@ function getDeadline(deadline) {
         return `${days} days ${hours} hours ${minutes} minutes`;
     }
 
-    return 'N/A';
+    return '';
 }
 
 export default getDeadline;

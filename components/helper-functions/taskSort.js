@@ -9,7 +9,7 @@ function taskSort() {
     if (sortType === 'deadline') {
         taskList.sort((a, b) => {
             if (a.finished === b.finished) {
-                return a.deadline > b.deadline ? 1 : -1;
+                return (a.deadline ? a.deadline : Infinity) > (b.deadline ? b.deadline : Infinity) ? 1 : -1;
             }
 
             return a.finished ? 1 : -1;

@@ -12,32 +12,33 @@
         <link rel="stylesheet" href="./style.css" />
     </head>
     <body>
-        <h1>Welcome to To-DO app!</h1>
-        <form action="#">
-            <h2>Add a to-do item</h2>
-            <label for="description">Add a short description:</label>
-            <textarea
-                name="description"
-                id="description"
-                cols="30"
-                rows="6"
-                maxlength="160"
-                required
-                placeholder="Type task description here..."
-            ></textarea>
-            <label for="deadline">Deadline: </label>
-            <input type="datetime-local" name="deadline" id="deadline" />
-            <input id="add" type="submit" value="add" />
-        </form>
-        <section>
-            <label for="sort">Sorting</label>
-            <select name="sort" id="sort">
-                <option value="new">Recently added</option>
-                <option value="deadline">Deadline</option>
-                <option value="completed">Recently completed</option>
-            </select>
-            <div id="list"></div>
-        </section>
-        <script src="./script.js" type="module" defer></script>
+        <main>
+            <h1>Welcome to To-DO app!</h1>
+            <form action="#">
+                <label for="description">Add a new task below:</label>
+                <textarea
+                    name="description"
+                    id="description"
+                    cols="30"
+                    rows="6"
+                    maxlength="160"
+                    required
+                    placeholder="Type task description here..."
+                ></textarea>
+                <label for="deadline">Deadline: </label>
+                <input type="datetime-local" name="deadline" id="deadline" />
+                <input id="add" type="submit" value="Add" />
+            </form>
+            <section>
+                <label for="sort">Sorting</label>
+                <select name="sort" id="sort">
+                    <option value="new">Recently added</option>
+                    <option value="deadline">Deadline</option>
+                    <option value="completed">Recently completed</option>
+                </select>
+                <div id="list"></div>
+            </section>
+            <script src="./script.js" type="module" defer></script>
+        </main>
     </body>
 </html>
