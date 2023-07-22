@@ -1,11 +1,19 @@
 const initialData = [
-    { deadline: '2023-08-03T21:54', description: 'Visit mom', finished: false, id: '0', startDate: 1689965675993 },
     {
-        deadline: '2023-08-03T21:54',
+        deadline: '',
+        description: 'Visit mom',
+        finished: false,
+        id: '0',
+        addedDate: 1689965675993,
+        finishDate: '',
+    },
+    {
+        deadline: 1690364340000,
         description: 'Should be first ',
         finished: true,
-        id: '0',
-        startDate: 1689965675997,
+        id: '1',
+        addedDate: 1689965675997,
+        finishDate: 1690018915181,
     },
 ];
 const sessionKey = 'toDoList';
