@@ -22,8 +22,8 @@ function setUpFunction() {
                 symbol => symbol.toLowerCase().charCodeAt() >= 97 && symbol.toLowerCase().charCodeAt() <= 122
             )
         ) {
-            alert('Input field should contain at least some letters!');
-        } else if (dateInput <= new Date(currentTime.getTime())) {
+            alert('Input field should include text!');
+        } else if (dateInput <= currentTime.getTime()) {
             alert(`Task deadline cannot be earlier than present (${getFormattedTime(currentTime)}) time`);
         } else {
             const newItem = {
