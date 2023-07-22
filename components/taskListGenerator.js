@@ -1,13 +1,10 @@
 import checkBoxElement from './task_container_elements/checkBoxElement.js';
-import getDeadline from './getDeadline.js';
-import { sessionKey, sortKey } from './initialData.js';
 import taskSort from './taskSort.js';
+import deleteButtonElement from './task_container_elements/deleteButtonElement.js';
+import timeTillDeadlineElement from './task_container_elements/timeTillDeadlineElement.js';
 
 function taskListGenerator() {
-    document.getElementById('sort').value = JSON.parse(sessionStorage.getItem(sortKey));
-
     let taskList = taskSort();
-
     document.getElementById('list').innerHTML = null;
     for (let task of taskList) {
         const toDo = document.createElement('div');
@@ -17,30 +14,10 @@ function taskListGenerator() {
         const description = document.createElement('h3');
         description.textContent = task.description;
 
-        const checkbox = checkBoxElement(task, taskList);
-
-        const endDate = document.createElement('p');
-        endDate.setAttribute('class', 'date');
-        endDate.textContent = task.finished ? 'Completed' : getDeadline(task.deadline);
-
-        const deleteBtn = document.createElement('a');
-        deleteBtn.setAttribute('class', 'delete');
-        deleteBtn.textContent = 'Delete';
-        deleteBtn.addEventListener('click', e => {
-            if (confirm('Confirm item removal from the list.')) {
-                taskList.splice(
-                    taskList.findIndex(item => '' + item.id === '' + e.target.parentElement.id),
-                    1
-                );
-                sessionStorage.setItem(sessionKey, JSON.stringify(taskList));
-                taskListGenerator();
-            }
-        });
-
-        toDo.appendChild(checkbox);
+        toDo.appendChild(checkBoxElement(task, taskList));
         toDo.appendChild(description);
-        toDo.appendChild(endDate);
-        toDo.appendChild(deleteBtn);
+        toDo.appendChild(timeTillDeadlineElement(task));
+        toDo.appendChild(deleteButtonElement(taskList));
         document.querySelector('#list').appendChild(toDo);
     }
     return taskList;

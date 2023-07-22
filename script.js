@@ -1,5 +1,4 @@
 'use strict';
-
 import getFormattedTime from './components/getFormattedTime.js';
 import { initialData, sessionKey, sortKey } from './components/initialData.js';
 import taskListGenerator from './components/taskListGenerator.js';
@@ -10,6 +9,7 @@ if (!JSON.parse(sessionStorage.getItem(sessionKey))) {
 if (!JSON.parse(sessionStorage.getItem(sortKey))) {
     sessionStorage.setItem(sortKey, JSON.stringify('new'));
 }
+document.getElementById('sort').value = JSON.parse(sessionStorage.getItem(sortKey));
 taskListGenerator();
 
 // Add event listener
