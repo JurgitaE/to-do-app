@@ -2,7 +2,6 @@ import { sessionKey, sortKey } from './initialData.js';
 
 function taskSort() {
     const taskList = JSON.parse(sessionStorage.getItem(sessionKey));
-    console.log(taskList);
     const sortType = JSON.parse(sessionStorage.getItem(sortKey));
     if (sortType === 'new') {
         taskList.sort((a, b) => {

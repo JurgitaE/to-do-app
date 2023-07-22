@@ -1,5 +1,4 @@
 function getDeadline(deadline) {
-    console.log(deadline);
     let days;
     let hours;
     let minutes;
