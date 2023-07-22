@@ -1,13 +1,10 @@
 'use strict';
 
+import { initialData, sessionKey, sortKey } from './components/initialData.js';
 import taskListGenerator from './components/taskListGenerator.js';
 
-const initialData = [
-    { deadline: '', description: 'some not important task', finished: false, id: '0', finishDate: '', startDate: '' },
-];
 let taskList = [];
 
-const sessionKey = 'toDoList';
 if (!JSON.parse(sessionStorage.getItem(sessionKey))) {
     taskList = initialData;
     sessionStorage.setItem(sessionKey, JSON.stringify(taskList));
@@ -15,9 +12,10 @@ if (!JSON.parse(sessionStorage.getItem(sessionKey))) {
     taskList = JSON.parse(sessionStorage.getItem(sessionKey));
 }
 
-// generate list
-taskList = taskListGenerator(taskList);
-sessionStorage.setItem(sessionKey, JSON.stringify(taskList));
+if (!JSON.parse(sessionStorage.getItem(sortKey))) {
+    sessionStorage.setItem(sortKey, JSON.stringify('new'));
+}
+taskList = taskListGenerator();
 
 // Add event listener
 const btnAdd = document.getElementById('add');
@@ -29,11 +27,16 @@ btnAdd.addEventListener('click', function (e) {
         description: document.getElementById('description').value,
         finished: false,
         id: `${taskList.length > 0 ? [...taskList].map(item => +item.id).sort((a, b) => b - a)[0] + 1 : '0'}`,
-        finishDate: '',
-        startDate: '',
+        startDate: Date.now(),
     };
     taskList.push(newItem);
     sessionStorage.setItem(sessionKey, JSON.stringify(taskList));
-    document.getElementById('list').innerHTML = '';
-    taskListGenerator(taskList);
+    taskListGenerator();
+});
+
+// sorting
+
+console.log(document.getElementById('sort').value);
+document.getElementById('sort').addEventListener('change', e => {
+    sessionStorage.setItem(sortKey, JSON.stringify(document.getElementById('sort').value));
 });
