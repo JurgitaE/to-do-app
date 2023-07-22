@@ -1,5 +1,5 @@
 import { sessionKey } from '../initialData.js';
-import taskListGenerator from '../taskListGenerator.js';
+import taskListDisplay from '../helper-functions/taskListDisplay.js';
 
 function deleteButtonElement(taskList) {
     const deleteBtn = document.createElement('a');
@@ -12,7 +12,7 @@ function deleteButtonElement(taskList) {
                 1
             );
             sessionStorage.setItem(sessionKey, JSON.stringify(taskList));
-            taskListGenerator();
+            taskListDisplay();
         }
     });
     return deleteBtn;

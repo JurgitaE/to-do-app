@@ -1,5 +1,5 @@
 import { sessionKey } from '../initialData.js';
-import taskListDisplay from '../helper-functions/taskListDisplay.js';
+import taskListGenerator from '../helper-functions/taskListGenerator.js';
 
 function checkBoxElement(task, taskList) {
     const checkbox = document.createElement('input');
@@ -17,7 +17,7 @@ function checkBoxElement(task, taskList) {
             taskItem.finishDate = '';
             sessionStorage.setItem(sessionKey, JSON.stringify(taskList));
         }
-        taskListDisplay();
+        taskListGenerator();
     });
 
     return checkbox;

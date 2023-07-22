@@ -9,6 +9,7 @@ function getDeadline(deadline) {
         minutes = Math.trunc(
             (deadline - currentDate - days * 1000 * 60 * 60 * 24 - hours * 1000 * 60 * 60) / 1000 / 60
         );
+
         return `${days} days ${hours} hours ${minutes} minutes`;
     }
 
