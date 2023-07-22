@@ -1,3 +1,4 @@
+import getDeadline from './getDeadline.js';
 import { sessionKey, sortKey } from './initialData.js';
 import taskSort from './taskSort.js';
 
@@ -37,7 +38,7 @@ function taskListGenerator() {
 
         const endDate = document.createElement('p');
         endDate.setAttribute('class', 'date');
-        endDate.textContent = item.deadline ? item.deadline.toLocaleString('lt-LT').split('T').join(' ') : 'N/A';
+        endDate.textContent = getDeadline(item.deadline);
 
         const deleteBtn = document.createElement('a');
         deleteBtn.setAttribute('class', 'delete');
@@ -49,7 +50,7 @@ function taskListGenerator() {
                     1
                 );
                 sessionStorage.setItem(sessionKey, JSON.stringify(taskList));
-                taskListGenerator(taskList);
+                taskListGenerator();
             }
         });
 

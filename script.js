@@ -1,22 +1,16 @@
 'use strict';
 
-import getTime from './components/getTime.js';
+import getFormattedTime from './components/getFormattedTime.js';
 import { initialData, sessionKey, sortKey } from './components/initialData.js';
 import taskListGenerator from './components/taskListGenerator.js';
 
-let taskList = [];
-
 if (!JSON.parse(sessionStorage.getItem(sessionKey))) {
-    taskList = initialData;
-    sessionStorage.setItem(sessionKey, JSON.stringify(taskList));
-} else {
-    taskList = JSON.parse(sessionStorage.getItem(sessionKey));
+    sessionStorage.setItem(sessionKey, JSON.stringify(initialData));
 }
-
 if (!JSON.parse(sessionStorage.getItem(sortKey))) {
     sessionStorage.setItem(sortKey, JSON.stringify('new'));
 }
-taskList = taskListGenerator();
+taskListGenerator();
 
 // Add event listener
 const btnAdd = document.getElementById('add');
@@ -26,7 +20,7 @@ btnAdd.addEventListener('click', function (e) {
     const textArea = document.getElementById('description').value;
     const dateInput = new Date(document.getElementById('deadline').value).getTime();
     const currentTime = new Date();
-
+    let taskList = JSON.parse(sessionStorage.getItem(sessionKey));
     if (
         ![...textArea].some(
             symbol => symbol.toLowerCase().charCodeAt() >= 97 && symbol.toLowerCase().charCodeAt() <= 122
@@ -34,7 +28,7 @@ btnAdd.addEventListener('click', function (e) {
     ) {
         alert('Input field should contain at least some letters!');
     } else if (dateInput <= new Date(currentTime.getTime())) {
-        alert(`Task deadline cannot be earlier than present (${getTime(currentTime)}) time`);
+        alert(`Task deadline cannot be earlier than present (${getFormattedTime(currentTime)}) time`);
     } else {
         const newItem = {
             deadline: dateInput,
@@ -54,7 +48,6 @@ btnAdd.addEventListener('click', function (e) {
 
 // sorting
 
-console.log(document.getElementById('sort').value);
 document.getElementById('sort').addEventListener('change', e => {
     sessionStorage.setItem(sortKey, JSON.stringify(document.getElementById('sort').value));
     taskListGenerator();
